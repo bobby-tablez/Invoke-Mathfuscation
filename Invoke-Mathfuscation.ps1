@@ -21,7 +21,7 @@ Write-Output $cow
 
 $ErrorActionPreference = [System.Management.Automation.ActionPreference]::Stop
 
-$tochar = Read-Host -Prompt "Provide a command, full path to a .ps1 file (local or remote) invoked"
+$tochar = Read-Host -Prompt "Provide a command, full path to a .ps1 file (local or remote)"
 
 $raw = $tochar.ToCharArray()
 $space = $tochar.ToCharArray() | %{([int][char]$_) }
