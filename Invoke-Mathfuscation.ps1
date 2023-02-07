@@ -53,7 +53,7 @@ Write-Host "`nModified Char Values:"
 Write-Host $modChar -ForegroundColor Cyan
 Write-Host "`nHere's your obfuscated payload!`n"
 
-$invokes = @('(ga`l ?[?e]x)','(gal ?[?e]x)','(gcm ?[?e]x)','(gcm ?[?e]x)','(gal ?e[?x])','(gcm ?e[?x])','(`ga`l i?[?x])','(`gcm i?[?x])')
+$invokes = @('(ga`l ?[?e]x)','(gal ?[?e]x)','(gcm ?[?e]x)','(gcm ?[?e]x)','(gal ?e[?x])','(gcm ?e[?x])','(`ga`l i?[?x])','(g`cm i?[?x])')
 
 function CalcPayload() {
     $randVar = -join ((65..90) + (97..122) | Get-Random -Count 5 | % {[char]$_})
