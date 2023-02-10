@@ -2,7 +2,7 @@
 
 ![alt text](https://raw.githubusercontent.com/bobby-tablez/Invoke-Mathfuscation/main/mathfuscation.png)
 
-A quick command line utility that converts individual characters of an input string into char values. It then takes a user-supplied number value and uses it to ofuscate the individual char values. Lastly, it outputs a simple obfuscated one-liner which will execute the original string. Currently supports:
+A quick command line utility that converts individual characters of an input string into char values. It then takes a user-supplied number value and uses it to ofuscate the individual char values. Lastly, it outputs a simple obfuscated one-liner using random polymporphic variables which will execute the original string. Currently supports:
 
 * Remote URL (ie: http://example.com/dir/remote.ps1)
 * Local File (ie: C:\tmp\local.ps1)
