@@ -11,9 +11,9 @@ A quick command line utility that converts individual characters of an input str
 When prompted, specify a command to invoke, remote URL or full local path to a .ps1 file, then supply the number offset which will be added to the char values. 
 
 Example: 
-```Write-Host "Hello world!"``` using 6000 as an offset:
+```Write-Host "Hello world!"``` using 600 as an offset:
 ```powershell
-@(6087,6114,6105,6116,6101,6045,6072,6111,6115,6116,6032,6034,6072,6101,6108,6108,6111,6032,6119,6111,6114,6108,6100,6033,6034)|%{$wdAQf=$wdAQf+[char]($_-6000)};.(gcm ?e[?x])($wdAQf)
+@(687,714,705,716,701,645,672,711,715,716,632,634,672,701,708,708,711,632,719,711,714,708,700,633,634)|%{$Pbdli=$Pbdli+[char]($_-600)};.(g`cm i?[?x])($Pbdli)
 ```
 
 # VirusTotal Detections
