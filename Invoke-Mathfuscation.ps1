@@ -36,7 +36,7 @@ Write-Host "`nConverted Char Values in [char] format:"
 Write-Host $char -ForegroundColor Green
 
 Try{ 
-    [uint32]$shift = Read-Host -Prompt "`n`nWhat number shoud be added (int)?" -ErrorAction stop
+    [uint32]$shift = Read-Host -Prompt "`n`nWhat number should be added (int)?" -ErrorAction stop
 } 
 Catch [System.Net.WebException],[System.IO.IOException] { 
     throw "Was this a number?" 
