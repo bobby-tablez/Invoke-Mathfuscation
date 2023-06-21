@@ -6,7 +6,7 @@ A quick command line utility that converts individual characters of an input str
 
 * Remote URL (ie: http://example.com/dir/remote.ps1)
 * Local File (ie: C:\tmp\local.ps1)
-* PowerShell Command
+* PowerShell Command (ie: Write-Host "Hello world!")
 
 When prompted, specify a command to invoke, remote URL or full local path to a .ps1 file, then supply the number offset which will be added to the char values. 
 
@@ -16,7 +16,7 @@ Example:
 @(687,714,705,716,701,645,672,711,715,716,632,634,672,701,708,708,711,632,719,711,714,708,700,633,634)|%{$Pbdli=$Pbdli+[char]($_-600)};.(g`cm i?[?x])($Pbdli)
 ```
 
-# VirusTotal Detections
+## VirusTotal Detections
 
 Example: AMSI Bypass using Using Matt Graebers Reflection method:
 
