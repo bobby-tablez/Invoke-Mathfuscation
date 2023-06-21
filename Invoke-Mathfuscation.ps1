@@ -1,19 +1,12 @@
 <# 
 .SYNOPSIS
-    A quick tool that generates uses simple addition to obfuscate individual characters, then executes it
-
+    Obfuscate code using math, then execute it. Supports local or remote .ps1 files, or one-liners.
 .DESCRIPTION 
- 
+     A quick tool that generates uses simple addition to obfuscate individual characters, then executes it using a few random obfuscted invoke expressions.
 .NOTES 
     Use at your own risk.
-
-.COMPONENT 
-
 .LINK 
-    Useful Link to ressources or others.
- 
-.Parameter ParameterName 
-    None, user imput required when prompted. 
+    https://raw.githubusercontent.com/bobby-tablez/Invoke-Mathfuscation/main/Invoke-Mathfuscation.ps1
 #>
 
 $plain = "Invoke-Mathfuscation" 
