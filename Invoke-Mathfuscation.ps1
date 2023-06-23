@@ -10,7 +10,7 @@
 #>
 
 $plain = "Invoke-Mathfuscation" 
-$mfctd = "@(115,152,160,153,149,143,87,119,139,158,146,144,159,157,141,139,158,147,153,152)|%{$isXSw=$isXSw+[char]($_-42)};.(gcm ?e[?x])($isXSw)"
+$mfctd = '"@(115,152,160,153,149,143,87,119,139,158,146,144,159,157,141,139,158,147,153,152)|%{$isXSw=$isXSw+[char]($_-42)};.(gcm ?e[?x])($isXSw)"'
 
 foreach ($char in $plain.ToCharArray()) {
     Write-Host -NoNewline $char -ForegroundColor green
