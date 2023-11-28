@@ -7,8 +7,9 @@ A quick command line utility that converts individual characters of an input str
 * Remote URL (ie: http://example.com/dir/remote.ps1)
 * Local File (ie: C:\tmp\local.ps1)
 * PowerShell Command (ie: Write-Host "Hello world!")
+* **Update:** Supports positive/negative numbers
 
-When prompted, specify a command to invoke, remote URL or full local path to a .ps1 file, then supply the number offset which will be added to the char values. 
+When prompted, specify a command to invoke, remote URL or full local path to a .ps1 file, then supply the number offset which will be added or subtracted to the char values. 
 
 Example: 
 ```Write-Host "Hello world!"``` using 600 as an offset:
