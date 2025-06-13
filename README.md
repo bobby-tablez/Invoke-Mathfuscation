@@ -1,6 +1,6 @@
 # Invoke-Mathfuscation
 
-![alt text](https://raw.githubusercontent.com/bobby-tablez/Invoke-Mathfuscation/main/mathfuscation.png)
+![alt text](https://raw.githubusercontent.com/bobby-tablez/Invoke-Mathfuscation/main/mathfuscation_header.png)
 
 A quick command line utility that converts individual characters of an input string into char values. It then takes a user-supplied number value and uses it to ofuscate the individual char values. Lastly, it outputs a simple obfuscated one-liner using random polymorphic variables which will execute the original string. Currently supports:
 
